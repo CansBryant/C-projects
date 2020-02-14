@@ -1,20 +1,10 @@
-//编写一段程序，纵向显示练习5-8中得到的分布图。
+//编写一段程序，逆向显示代码清单5-12的分布图(即按照0~9、10〜19、…、100的顺序显示)。
 /*
     输入学生的分数并显示出分布情况
 */
 #include <stdio.h>
-#define NUMBER 80    /*人数上限*/
 
-/* 返回最大元素的下标 */
-int find_max_of_arrays(int a[], int length_of_a) {
-    int max = 0;
-    for (int i = 1; i < length_of_a; i++) {
-        if (a[i] > a[max]) {
-            max = i;
-        }
-    }
-    return max;
-}
+#define NUMBER 80    /*人数上限*/
 
 int main(void)
 {
@@ -43,21 +33,19 @@ int main(void)
         bunpu[tensu[i] / 10]++;
     }
 
-    int max = find_max_of_arrays(bunpu,11);
-    for (int i = 0; i < bunpu[max]; i++) {
-        for (int j = 0; j <= 10; j++) {
-            if (bunpu[j] >= bunpu[max] - i) { 
-                printf(" * ");
-            } else {
-                printf("   ");
-            }
-        }
-        printf("\n");
+    puts("\n---分布图---");
+    printf("  100:");
+    for (j = 0; j < bunpu[10]; j++)
+        putchar('*');
+    putchar('\n');
+
+    for (i = 0; i <= 9; i++)
+    {
+        printf("%2d-%2d:", i * 10, i * 10 + 9);
+        for (j = 0; j < bunpu[i]; j++)
+            putchar('*');
+        putchar('\n');
     }
-    printf("---------------------------------\n");
-    printf(" 0 10 20 30 40 50 60 70 80 90 100\n");
+
     return 0;
-
 }
-
-
