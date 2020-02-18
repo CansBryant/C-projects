@@ -4,8 +4,9 @@
 int main()
 {
     char a[] = "ABC";
-    bzero(a,sizeof(a));   //把数组设置为空
-    printf("%s",a);
+    printf("%s\n",a);
+    a[0] = 0;
+    printf("%s\n",a);
     return 0;
 
 }
